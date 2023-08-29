@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Vanila example @mappable-world/mappable-cartesian-projection</title>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+        <script src="https://js.api.mappable.world/3.0/?apikey=%APIKEY%&lang=en_US"></script>
+        <script src="common.js"></script>
+        <script>
+            window.map = null;
+
+            main();
+            async function main() {
+                await mappable.ready;
+                const {MMap, MMapTileDataSource, MMapLayer, MMapDefaultFeaturesLayer, MMapControls} = mappable;
+
+                const {MMapZoomControl} = await mappable.import('@mappable-world/mappable-controls@0.0.1');
+                const {MMapDefaultMarker} = await mappable.import('@mappable-world/mappable-markers@0.0.1');
+                const {Cartesian} = await mappable.import('@mappable-world/mappable-cartesian-projection');
+
+                map = new MMap(document.getElementById('app'), getMapProps(Cartesian));
+
+                map.addChild(new MMapTileDataSource(SOURCE));
+                map.addChild(new MMapLayer(LAYER));
+                map.addChild((new MMapDefaultFeaturesLayer()));
+
+                map.addChild(
+                    new MMapControls({position: 'right'}).addChild(new MMapZoomControl({}))
+                );
+
+                MARKERS.forEach(marker => {
+                    map.addChild(new MMapDefaultMarker(marker));
+                });
+            }
+        </script>
+
+        <link rel="stylesheet" href="common.css" />
+    </head>
+    <body>
+        <div id="app"></div>
+    </body>
+</html>

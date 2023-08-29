@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>React example @mappable-world/mappable-cartesian-projection</title>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+        <script crossorigin src="https://unpkg.com/react@17/umd/react.production.min.js"></script>
+        <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js"></script>
+        <script crossorigin src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+        <script src='https://js.api.mappable.world/3.0/?apikey=%APIKEY%&lang=en_US'></script>
+        <script src="common.js"></script>
+
+        <script type="text/babel">
+            window.map = null;
+
+            main();
+            async function main() {
+                const [mappableReact] = await Promise.all([mappable.import('@mappable-world/mappable-reactify'), mappable.ready]);
+                const reactify = mappableReact.reactify.bindTo(React, ReactDOM);
+
+                const {
+                    MMap,
+                    MMapTileDataSource,
+                    MMapLayer,
+                    MMapDefaultFeaturesLayer,
+                    MMapControls
+                } = reactify.module(mappable);
+
+                const {useState, useCallback} = React;
+
+                const {MMapZoomControl} = reactify.module(await mappable.import('@mappable-world/mappable-controls@0.0.1'));
+                const {MMapDefaultMarker} = reactify.module(await mappable.import('@mappable-world/mappable-markers@0.0.1'));
+                const {Cartesian} = await mappable.import('@mappable-world/mappable-cartesian-projection');
+
+                const mapProps = getMapProps(Cartesian);
+
+                ReactDOM.render(
+                    <React.StrictMode>
+                        <App />
+                    </React.StrictMode>,
+                    document.getElementById('app')
+                );
+
+                function App() {
+                    const [location, setLocation] = useState(mapProps.location);
+                    const onClick = useCallback(() => alert('Click!'), []);
+
+                    return (
+                        <MMap {...mapProps} location={location} ref={(x) => (map = x)}>
+                            <MMapTileDataSource {...SOURCE} />
+                            <MMapLayer {...LAYER} />
+
+                            <MMapDefaultFeaturesLayer />
+
+                            <MMapControls position="right">
+                                <MMapZoomControl />
+                            </MMapControls>
+
+                            {MARKERS.map(marker => <MMapDefaultMarker {...marker} />)}
+                        </MMap>
+                    );
+                }
+            }
+        </script>
+
+        <link rel="stylesheet" href="common.css" />
+    </head>
+    <body>
+        <div id="app"></div>
+    </body>
+</html>
