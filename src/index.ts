@@ -1,4 +1,4 @@
-import type {Projection, LngLat, WorldCoordinates} from '@mappable-world/mappable-types/common/types';
+import type {Projection, LngLat, WorldCoordinates} from '@mappable-world/mappable-types';
 
 function cycleRestrict(value: number, min: number, max: number): number {
     return value - Math.floor((value - min) / (max - min)) * (max - min);
@@ -23,14 +23,14 @@ function cycleRestrict(value: number, min: number, max: number): number {
  *     const PIC_WIDTH = 2526;
  *     const PIC_HEIGHT = 1642;
  *
- *     const {Cartesian} = await mappable.import('@mappable-world/mappable-cartesian-projection@0.0.1');
+ *     const {Cartesian} = await mappable.import('@mappable-world/mappable-cartesian-projection');
  *     // We set as a projection Cartesian. With this calculation, the center of the image will lie in the coordinates [0, 0].
  *     const projection = new Cartesian([
  *         [-PIC_WIDTH / 2, PIC_HEIGHT / 2 - worldSize],
  *         [worldSize - PIC_WIDTH / 2, PIC_HEIGHT / 2],
  *     ]);
  *
- *     const map = new MMaps({
+ *     const map = new MMaps(container, {
  *         //...,
  *         projection: projection
  *     });

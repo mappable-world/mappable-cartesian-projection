@@ -44,7 +44,7 @@ function getMapProps(Cartesian) {
 /* eslint-disable @typescript-eslint/no-unused-vars */
 const SOURCE = {
     id: 'image',
-    copyrights: ['© NASA', '© ESA', '© CSA', '© STScI', '© CC-BY-SA'],
+    copyrights: ['© NASA', '© ESA', '© CSA', '© STScI'],
     raster: {
         type: 'tile',
         fetchTile: 'https://static.mappable.world/s3/front-maps-static/maps-front-jsapi-3/examples/images/cartesian-projection/tiles/{{z}}/{{y}}-{{x}}.png'

@@ -4,7 +4,7 @@
 
 Mappable JS API package
 
-[![npm version](https://badge.fury.io/js/@mappable-world/mappable-cartesian-projection.svg)](https://badge.fury.io/js/@mappable-world/mappable-cartesian-projection)
+[![npm version](https://badge.fury.io/js/@mappable-world%2Fmappable-cartesian-projection.svg)](https://badge.fury.io/js/@mappable-world%2Fmappable-cartesian-projection)
 [![npm](https://img.shields.io/npm/dm/@mappable-world/mappable-cartesian-projection.svg)](https://www.npmjs.com/package/@mappable-world/mappable-cartesian-projection)
 [![Build Status](https://github.com/mappable-world/mappable-cartesian-projection/workflows/Run%20tests/badge.svg)](https://github.com/mappable-world/mappable-cartesian-projection/actions/workflows/tests.yml)
 
@@ -31,8 +31,7 @@ mappable.import.loaders.unshift(async (pkg) => {
     await mappable.import.script(`https://unpkg.com/${pkg}/dist/index.js`);
   }
 
-  Object.assign(mappable, window[`${pkg}`]);
-  return window[`${pkg}`];
+  return window[pkg];
 });
 ```
 
