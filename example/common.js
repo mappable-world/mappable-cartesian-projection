@@ -9,8 +9,7 @@ mappable.import.loaders.unshift(async (pkg) => {
         await mappable.import.script(`https://unpkg.com/${pkg}/dist/index.js`);
     }
 
-    Object.assign(mappable, window[`${pkg}`]);
-    return window[`${pkg}`];
+    return window['@mappable-world/mappable-cartesian-projection'];
 })
 
 const TILE_SIZE = 256;
