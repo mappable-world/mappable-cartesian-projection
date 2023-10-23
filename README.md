@@ -8,7 +8,7 @@ Mappable JS API package
 
 This package will project your cartesian dimensions to Mappable JS API world representation (see scheme of work below). Then you can use it as `MMap` `location` property, in `MMapListener` handlers, etc.
 
-![projection scheme](https://github.com/mappable-world/mappable-tiles-generator/blob/main/projection_scheme.png?raw=true)
+![projection scheme](https://github.com/mappable-world/mappable-cartesian-projection/blob/main/projection_scheme.png?raw=true)
 
 ## Install
 
