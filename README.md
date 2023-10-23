@@ -12,13 +12,15 @@ This package will project your cartesian dimensions to Mappable JS API world rep
 
 ## Install
 
+You can install this package via npm:
+
 ```bash
 npm install --save @mappable-world/mappable-cartesian-projection
 ```
 
 ## How use
 
-To use Cartesian projection, just import this package:
+To use Cartesian projection, just import it:
 
 ```js
 import {Cartesian} from '@mappable-world/mappable-cartesian-projection';
@@ -51,9 +53,9 @@ By default `mappable.import` can load self modules, scripts or style.
 To make the code above work, you should add a loader:
 
 ```js
-// Add loader at start loaders array
+// Add loader at the beginning of the loader queue
 mappable.import.loaders.unshift(async (pkg) => {
-    // Process only your package
+    // Process only this package
     if (!pkg.includes('@mappable-world/mappable-cartesian-projection')) return;
 
     // Load script directly. You can use another CDN
