@@ -1,7 +1,5 @@
 mappable.import.loaders.unshift(async (pkg) => {
-    if (!pkg.includes('@mappable-world/mappable-cartesian-projection')) {
-        return;
-    }
+    if (!pkg.includes('@mappable-world/mappable-cartesian-projection')) return;
 
     if (location.href.includes('localhost')) {
         await mappable.import.script(`/dist/index.js`);
