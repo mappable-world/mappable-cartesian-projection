@@ -6,7 +6,7 @@ function cycleRestrict(value: number, min: number, max: number): number {
 
 /**
  * Creates a projection of a rectangular coordinate area into world coordinates.
- * The area size in pixels is always 2*2.
+ * The area size in world is always 2*2.
  *
  * @name Cartesian
  * @class Cartesian projection of a rectangular area.
@@ -16,7 +16,7 @@ function cycleRestrict(value: number, min: number, max: number): number {
  * @param {Boolean[]} [cycled=[false, false]] An array of signs of map looping by x and y.
  * @example
  * ```js
- * mappable.ready(async () => {
+ * mappable.ready.then(async () => {
  *     const {MMaps} = mappable;
  *     // Calculate the size of all tiles at the maximum zoom.
  *     const worldSize = Math.pow(2, MAX_ZOOM) * 256;
@@ -43,6 +43,8 @@ export class Cartesian implements Projection {
     private _xRange!: number;
     private _yRange!: number;
     private _worldSize!: number;
+
+    type: 'cartesian';
 
     constructor(bounds: [LngLat, LngLat], cycled: [boolean, boolean] = [false, false]) {
         this._bounds = bounds;

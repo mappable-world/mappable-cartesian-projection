@@ -1,5 +1,5 @@
 <!-- BUGS: Please use this template -->
-<!-- QUESTIONS: This is not a general support forum! Ask Qs at http://stackoverflow.com/questions/tagged/@mappable-world/mappable-cartesian-projection -->
+<!-- QUESTIONS: This is not a general support forum! Ask Qs at http://stackoverflow.com/questions/tagged/mappable-cartesian-projection -->
 
 **@mappable-world/mappable-cartesian-projection Version:**  xxxxx
 

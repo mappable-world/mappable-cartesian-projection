@@ -32,10 +32,10 @@ npm run build
 After you create a new tag, or just push changes to the server, ci will be launched
 
 ```sh
-npm version prerelease --preid=beta --no-git-tag-version
+npm version patch --no-git-tag-version
 git add --all
 git commit -m "New version"
-git tag 0.0.1-beta.2
+git tag 0.0.2
 git push --tags origin HEAD:main
 ```
 
@@ -54,3 +54,19 @@ For it to work, you need to declare two secrets in the GitHub Action:
 
 - `APIKEY` - To run autotests on the JS API https://mappable.world/docs/js-api/quickstart.html#get-api-key
 - `NPM_TOKEN` - To publish your package to npm
+
+## Development loader
+
+```js
+// Add loader at the beginning of the loader queue
+mappable.import.loaders.unshift(async (pkg) => {
+    // Process only this package
+    if (!pkg.includes('@mappable-world/mappable-cartesian-projection')) return;
+
+    // Load script directly. You can use another CDN
+    await mappable.import.script(`/dist/index.js`);
+
+    // Return result object
+    return window['@mappable-world/mappable-cartesian-projection'];
+});
+```
