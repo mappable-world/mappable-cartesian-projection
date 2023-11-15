@@ -44,7 +44,7 @@ export class Cartesian implements Projection {
     private _yRange!: number;
     private _worldSize!: number;
 
-    type: 'cartesian';
+    public type = 'cartesian';
 
     constructor(bounds: [LngLat, LngLat], cycled: [boolean, boolean] = [false, false]) {
         this._bounds = bounds;
